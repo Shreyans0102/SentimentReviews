@@ -29,10 +29,13 @@ def convertUrl(prodName):
     return mainUrl
 
 def gettingProdLink(url):
-    r = requests.get(convertUrl(url))
-    soup = BeautifulSoup(r.content, "html.parser") 
-    link = soup.find('a').get('href')    
-    return link
+    headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"}
+    r = requests.get(convertUrl(url),headers =headers)
+
+    root = html.fromstring(r.content)
+    link = root.xpath("//div[contains(@class,'s-result-list') and contains(@class,'s-search-results') and contains(@class,'sg-row')]/div")
+     
+    return "https://www.amazon.com/dp/" + link[0].attrib["data-asin"]
 
 def ParseReviews(url):
     # This script has only been tested with Amazon.com
