@@ -31,7 +31,9 @@ ctx.verify_mode = ssl.CERT_NONE
 #Scrapping the amazonreviews for the product
 def collectReviews(prodname):
     url= "https://www.amazon.com/dp/" + gettingProdLink(prodname)
-    html = urllib.request.urlopen(url, context=ctx).read()
+    headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"}
+    page = requests.get(url,headers = headers)
+    html = page.text
     soup = BeautifulSoup(html, 'html.parser')
     html = soup.prettify('utf-8')
     product_json = {}

@@ -25,14 +25,14 @@ def my_form_post():
     analysis = TextBlob(review_in_line)
     polarity = str(((analysis.sentiment.polarity+1)*50))
     affiliate = "https://" + urllib.parse.quote('www.amazon.com/gp/product/'+gettingProdLink(processed_text)+'/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=saga0ea-20&creative=9325&linkCode=as2&creativeASIN='+gettingProdLink(processed_text))
-
-    return render_template("output.html",polarity = polarity,affiliate = affiliate)
-
-
-
-
-
-
+    infoOfProduct = "Name of Brand you are looking for : " + final_list["brand"]
+    name = "Name of the product : " + final_list['name']
+    noOfReviews = "Number of rating analysed :" + final_list["customer-reviews-count"]
+    avgRating = "Average rating of the product on Amazon.com : " + final_list["star-rating"]
+    return render_template(
+        "output.html",polarity = polarity,affiliate = affiliate,infoOfProduct = infoOfProduct, name = name,noOfReviews = noOfReviews, avgRating = avgRating
+        )
+    
 
 
 if __name__== '__main__':
