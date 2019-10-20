@@ -1,4 +1,14 @@
-<form method="POST">
-    <input name="text">
-    <input type="submit">
-</form>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/input.css') }}">
+    <div class='heading'>SAGA Sentiment Analysis</div>
+</head>
+
+<body>
+    <form method="POST">
+        <div class="search" >
+            <label class="searchtext">Product Name:</label>
+            <input type="text" class="input" name="text">
+            <input type="submit" class="button" value="Analyze">
+        </div>
+    </form>
+</body>
