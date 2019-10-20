@@ -1,17 +1,43 @@
 <html>
     <head>
-
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/myoutput.css') }}" type="text/css">
     </head>
     <body>
-        <h1>Welcome to the paradise for Consumers!</h1><br><br><br>
-        {{infoOfProduct}} <br>
-        {{name}}<br>
-        Scraping reviews from Amazon.com for {{name}}..<br>
-        Performing Sentiment Analysis on the reviews scraped.........<br>
-        {{noOfReviews}}<br>
-        {{avgRating}} <br><br>
-        <h2>The percent of people confidence in the product is {{ polarity }} %</h2><br>
-        If you wanna check out the product :<br> 
-        <a href = "{{  affiliate  }}">{{  affiliate  }}</a>
+
+        <!--- Heading of output page -->
+        <div id="heading"> SAGA: Sentimental analysis </div>
+
+        <!--- blank space -->
+        <section>
+                &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+        </section>
+
+        <div>
+            <!-- product information -->
+            Brand: {{infoOfProduct}} <br>
+            &nbsp;<br>
+            {{name}}<br>
+            &nbsp;<br> &nbsp;<br> &nbsp;<br> &nbsp;<br>
+
+            <!-- weird loading statements that don't do anything lol -->
+            Scraping reviews from Amazon.com for {{name}}..<br>
+            &nbsp;<br>
+            Performing Sentiment Analysis on the reviews scraped.........<br>
+            &nbsp;<br> &nbsp;<br> &nbsp;<br> &nbsp;<br>
+
+            <!-- actual info -->
+            {{noOfReviews}}<br>
+            &nbsp;<br>
+            {{avgRating}} <br><br>
+            &nbsp;<br> &nbsp;<br> &nbsp;<br> &nbsp;<br>
+
+            
+            
+            
+            <h2>The percent of people confidence in the product is {{ polarity }} %</h2><br>
+            <a href = "{{  affiliate  }}" target ="_blank">Click here to view your product</a>
+        </div>
+
+        
     </body>
 </html>
